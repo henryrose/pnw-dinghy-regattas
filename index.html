@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PNW Dinghy Regattas 2027: ILCA, 505, Flying Scot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10283F; --ink-2:#44596B; --paper:#EDF2F3; --panel:#FFFFFF; --rule:#C7D4D9;
+  --sea:#1F6B5E; --sea-bg:#DCEDE8; --flag:#9A6A00; --flag-bg:#F6E9C6; --buoy:#A8321F; --buoy-bg:#F6DCD5;
+  --rail:#9FB3BC; --link:#0F5C8C;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#E4ECEF; --ink-2:#9DB0BA; --paper:#0E1A24; --panel:#152532; --rule:#27404F;
+    --sea:#6CC7B2; --sea-bg:#173A34; --flag:#E9B949; --flag-bg:#3A2F12; --buoy:#F08A74; --buoy-bg:#3F1F18;
+    --rail:#3D5666; --link:#7CC0EA;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E4ECEF; --ink-2:#9DB0BA; --paper:#0E1A24; --panel:#152532; --rule:#27404F;
+  --sea:#6CC7B2; --sea-bg:#173A34; --flag:#E9B949; --flag-bg:#3A2F12; --buoy:#F08A74; --buoy-bg:#3F1F18;
+  --rail:#3D5666; --link:#7CC0EA;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.5 "Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--link)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--link);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:32px 20px 64px}
+header h1{font:700 clamp(2.4rem,7vw,4.4rem)/.95 "Barlow Condensed","Arial Narrow",sans-serif;margin:0;letter-spacing:-.01em}
+header p{max-width:62ch;color:var(--ink-2);margin:14px 0 0}
+.rail{margin:34px 0 8px;position:relative}
+.rail-track{display:grid;grid-template-columns:repeat(12,1fr);border-top:2px solid var(--rail)}
+.rail-month{position:relative;min-height:74px;padding-top:26px;border-left:1px solid var(--rule)}
+.rail-month:first-child{border-left:0}
+.rail-month span{font:600 .85rem/1 "Barlow Condensed","Arial Narrow",sans-serif;color:var(--ink-2);padding-left:6px}
+.rail-dots{position:absolute;top:-7px;left:0;right:0;height:0}
+.dot{position:absolute;width:12px;height:12px;border-radius:50%;border:2px solid var(--paper);transform:translateX(-50%);cursor:pointer;padding:0}
+.dot.open{background:var(--sea)} .dot.note{background:var(--flag)} .dot.check{background:var(--buoy)} .dot.tba{background:var(--rail)}
+.dot.dim{opacity:.18}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.9rem;color:var(--ink-2);margin:6px 0 22px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.controls button{font:600 .95rem/1 "Barlow",sans-serif;color:var(--ink);background:var(--panel);border:1px solid var(--rule);padding:9px 14px;border-radius:999px;cursor:pointer}
+.controls button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.controls .lbl{font:600 .9rem/1 "Barlow",sans-serif;color:var(--ink-2);align-self:center;margin-right:4px}
+.classes{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+.chip{font:600 .78rem/1 "Barlow",sans-serif;padding:5px 8px;border-radius:999px;border:1.5px solid var(--ink);color:var(--ink)}
+.chip.start{background:var(--ink);color:var(--panel)}
+.chip.cond{border-style:dashed;color:var(--ink-2);border-color:var(--ink-2)}
+.month-h{font:700 1.5rem/1 "Barlow Condensed","Arial Narrow",sans-serif;margin:30px 0 8px;color:var(--ink-2)}
+.row{display:grid;grid-template-columns:118px 1fr 190px;gap:18px;background:var(--panel);border:1px solid var(--rule);border-left-width:6px;padding:16px 18px;margin-bottom:10px;border-radius:6px}
+.row.open{border-left-color:var(--sea)} .row.note{border-left-color:var(--flag)} .row.check{border-left-color:var(--buoy)} .row.tba{border-left-color:var(--rail)}
+.row.flash{box-shadow:0 0 0 3px var(--link)}
+.date{font:700 1.55rem/1.02 "Barlow Condensed","Arial Narrow",sans-serif}
+.date small{display:block;font:500 .8rem/1.3 "Barlow",sans-serif;color:var(--ink-2);margin-top:4px}
+.name{font:600 1.15rem/1.25 "Barlow",sans-serif;margin:0}
+.where{color:var(--ink-2);font-size:.95rem;margin:2px 0 8px}
+.verdict{display:inline-block;font:600 .8rem/1 "Barlow",sans-serif;padding:5px 9px;border-radius:4px;margin-bottom:6px}
+.open .verdict{background:var(--sea-bg);color:var(--sea)} .note .verdict{background:var(--flag-bg);color:var(--flag)} .check .verdict{background:var(--buoy-bg);color:var(--buoy)} .tba .verdict{background:var(--paper);color:var(--ink-2)}
+.elig{margin:0;max-width:70ch;font-size:.97rem}
+.side{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.nor{display:inline-block;font:600 .95rem/1 "Barlow",sans-serif;text-decoration:none;color:var(--panel);background:var(--link);padding:10px 14px;border-radius:6px}
+.nor:hover{filter:brightness(1.1)}
+.nor.none{background:transparent;color:var(--ink-2);border:1px dashed var(--rule);cursor:default}
+.side .yr{font-size:.85rem;color:var(--ink-2)}
+.side .alt{font-size:.88rem}
+.far{font-size:.85rem;color:var(--ink-2)}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);color:var(--ink-2);font-size:.92rem;max-width:72ch}
+footer p{margin:0 0 10px}
+@media (max-width:760px){
+  .row{grid-template-columns:1fr;gap:8px}
+  .date{font-size:1.35rem}
+  .date small{display:inline;margin-left:8px}
+  .rail-month span{font-size:.72rem;padding-left:2px}
+}
+@media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto!important} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Dinghy regattas in reach of Port Townsend, 2027</h1>
+  <p>Annual regattas for ILCA, 505 and Flying Scot sailors, with projected 2027 dates, drive distance, and what each event's most recent Notice of Race says about who can enter and which classes get a start. Dates are projections from past years unless marked confirmed. The adult-eligibility colors refer to the ILCA fleet unless the event has no ILCA start.</p>
+</header>
+
+<div class="rail" aria-hidden="true">
+  <div class="rail-dots" id="dots"></div>
+  <div class="rail-track" id="months"></div>
+</div>
+<div class="legend">
+  <span><i style="background:var(--sea)"></i>Open to adults</span>
+  <span><i style="background:var(--flag)"></i>Open, with a requirement to plan for</span>
+  <span><i style="background:var(--buoy)"></i>Check with the organizer</span>
+</div>
+
+<div class="controls" role="group" aria-label="Filter by class">
+  <span class="lbl">Class</span>
+  <button type="button" data-c="any" aria-pressed="true">All classes</button>
+  <button type="button" data-c="ilca" aria-pressed="false">ILCA</button>
+  <button type="button" data-c="f505" aria-pressed="false">505</button>
+  <button type="button" data-c="fs" aria-pressed="false">Flying Scot</button>
+</div>
+<div class="controls" role="group" aria-label="Filter regattas">
+  <span class="lbl">Show</span>
+  <button type="button" data-f="all" aria-pressed="true">All regattas</button>
+  <button type="button" data-f="near" aria-pressed="false">Within 200 miles</button>
+  <button type="button" data-f="flag" aria-pressed="false">Needs attention</button>
+</div>
+<p class="far" style="margin:-6px 0 10px">Solid tag: the class is named in the NOR and gets its own start. Dashed tag: the class can race only under a condition shown on the tag.</p>
+
+<main id="list"></main>
+
+<footer>
+  <p>Eligibility notes come from reading each linked Notice of Race. Most are the 2026 edition; where the 2026 document wasn't posted or reachable, the year shown is the one read. Rules can change year to year, so re-check the 2027 NOR when it's published.</p>
+  <p>Insurance: US Sailing membership doesn't include third-party liability cover. Most events here require it, and the BC events set a USD minimum for US boats.</p>
+  <p>Flying Scot racing in the region is thin. The Flying Scot class lists Pacific District fleets at Columbia Basin Sailing Club (Richland), Lake Washington and Sequim Bay, but the PT Small Boat Regatta is the only annual regatta found with a dedicated Scot start. Sequim Bay YC's one-design regatta for Thistles, Scots, Lightnings and 505s last appears on Regatta Network in 2021.</p>
+  <p>Not annual, so not listed: the 505 Pacific Coast Championships (Bellingham YC in 2025) and Bellingham's Dale Jepsen One-Design regatta, which hasn't been held since 2021.</p>
+</footer>
+</div>
+
+<script>
+const CF = "https://d282wvk2qi4wzk.cloudfront.net/";
+const R = [
+ {m:0,d:23,date:"Jan 23–24",tag:"Confirmed",k:{ilca:'start',f505:'if 5+ enter',fs:'if 5+ enter'},name:"Frigid Digit",where:"CYC Seattle, Shilshole",mi:50,s:"open",v:"Open to adults",
+  e:"Open to ILCA, RS Aero, Tasar and any dinghy class with 5+ entries. No age limit. Boats need $300,000 third-party liability insurance.",
+  nor:CF+"MCkFfinwUUAa_2026-Frigid-Digit-NOR.pdf",yr:"2026 NOR"},
+ {m:1,d:13,date:"Feb 13–14",k:{ilca:'start'},name:"Frozen Assets",where:"Royal Victoria YC",mi:50,far:"+ Coho ferry",s:"note",v:"Open, ILCA 7 & 6 only",
+  e:"ILCA 7 and ILCA 6 are open with no age limit (no ILCA 4 start). Age rules apply only to Optis. US residents need USD $300,000 liability insurance. Run as a coached regatta.",
+  nor:CF+"kqyaJRPdQuNA_2026-Frozen-Assets-Notice-of-Race---FINAL.pdf",yr:"2026 NOR"},
+ {m:3,d:10,date:"Apr 10–11",k:{ilca:'start',f505:'if 5+ enter',fs:'if 5+ enter'},name:"Flights of Spring",where:"Jericho Sailing Centre, Vancouver",mi:140,s:"open",v:"Open to adults",
+  e:"Open to ILCA 7, 6 and 4, Tasar, F18, Hobie 18 and foiling classes. No age limit. Liability insurance recommended.",
+  nor:"https://jsca.bc.ca/wp-content/uploads/2026/01/2026_NoR_FoS-2.pdf",yr:"2026 NOR"},
+ {m:3,d:17,date:"Apr 17–18",k:{ilca:'start',f505:'if 5+ enter',fs:'if 5+ enter'},name:"Puget Sound Spring Regatta",where:"CYC Seattle, Shilshole",mi:50,s:"open",v:"Open to adults",
+  e:"Dinghy course is open to RS Aero, ILCA, Tasar, Star, Optimist and Snipe. Youth discount only, no age limit. $300,000 liability insurance required.",
+  nor:CF+"EQfHrLEamKHK_CYC-PSSR-Regatta-NOR---2026.pdf",yr:"2026 NOR"},
+ {m:3,d:18,date:"Apr 17–18",k:{ilca:'start'},name:"Kitten Cup",where:"Royal Vancouver YC",mi:140,s:"open",v:"Open to adults",
+  e:"Open to all boats of ILCA 4, 6 and 7 (plus 29er, 420, Feva, Opti). Age rules apply only to Opti fleets. Youth-heavy. US boats need USD $300,000 liability insurance.",
+  nor:"https://rvan.ca/KittenCup/2026/NOR%20Kitten%20Cup%202026.pdf",yr:"2026 NOR"},
+ {m:4,d:1,date:"May 1–2",k:{ilca:'start',f505:'open class, 3+ boats',fs:'open class, 3+ boats'},name:"Spring Dinghies",where:"Royal Victoria YC",mi:50,far:"+ Coho ferry",s:"open",v:"Open to adults",
+  e:"Open to all boats of ILCA 7, 6 and 4 plus an open class. Age rules apply only to Optis. A BC Summer Games qualifier, so expect mostly youth. US residents need USD $300,000 insurance.",
+  nor:CF+"OhEZKxAnkThz_2026-Spring-Dinghy-NoR.pdf",yr:"2026 NOR"},
+ {m:4,d:15,date:"May 15–16",tag:"or May 22–23",k:{ilca:'start',f505:'all classes welcome',fs:'all classes welcome'},name:"COSA Springtime Regatta + BC Laser Masters",where:"Central Okanagan SA, Kelowna",mi:340,s:"note",v:"Open, membership proof needed",
+  e:"Open to all classes, with a separate Open (adult) entry fee. Every sailor must show Sail Canada or US Sailing membership at registration.",
+  nor:"https://docs.google.com/document/d/1ZzFEhvze-C0Z8QEGLS8wFdg86DBWiFTVt_xIBACO2JQ/edit?usp=sharing",yr:"2026 NOR"},
+ {m:5,d:5,date:"Jun 5–6",k:{ilca:'start',f505:'5+ or handicap',fs:'5+ or handicap'},name:"John DeBenedetti Memorial",where:"Vancouver Lake SC, WA",mi:215,s:"open",v:"Open to adults",
+  e:"Standard entry fee with a discount for youth skippers 20 and under. Fleets need 5 boats or they're scored together on Portsmouth. The club site was down when checked, so this is the latest NOR posted.",
+  nor:"https://vlsc.org/2023-debenedetti-regatta-nor/",yr:"2023 NOR (latest found)"},
+ {m:5,d:12,date:"Jun 12–13",k:{ilca:'start',f505:'5+ or handicap',fs:'5+ or handicap'},name:"NOSA Regatta",where:"North Okanagan SA, Vernon",mi:370,s:"check",v:"Visitors need approval",
+  e:"Adult and youth fees are listed, but entry is limited to members of NOSA, SOSA or COSA, or sailors sanctioned by the NOSA board. Ask the club before planning. A Laser start needs 5 boats.",
+  nor:"https://static1.squarespace.com/static/614539d02e37d571e7e20d7b/t/680557d58d7a567bf75fd0c0/1745180629734/2025+NOSA+Regatta+NOR.pdf",yr:"2025 NOR (2026 not posted)"},
+ {m:5,d:19,date:"Jun 19–20",k:{ilca:'start'},name:"WAVES / Sail West",where:"Royal Vancouver YC",mi:140,s:"note",v:"Open, high insurance minimum",
+  e:"Open to ILCA 4, 6 and 7 sailors who are ILCA-NA members, with no age limit. Boats from outside Canada need USD $1,200,000 third-party liability insurance.",
+  nor:"https://www.rvan.ca/WAVES/NoR%20WAVES%202026.pdf",yr:"2026 NOR"},
+ {m:6,d:10,date:"Jul 10–11",k:{ilca:'start'},name:"WIND Regatta + ILCA District 22 Champs",where:"CGRA, Cascade Locks, OR",mi:260,s:"open",v:"Open to adults",
+  e:"Open to ILCA 7, 6 and 4 and Club 420; current ILCA membership required. The 2025 NOR limited adults to ILCA 7 and 6; the 2026 NOR dropped that line.",
+  nor:CF+"sNoQWrtzUOql_2026-WIND-NOR-Final.pdf",yr:"2026 NOR"},
+ {k:{f505:'start'},m:6,d:11,date:"Jul 10–11",name:"Kitsilano Invitational",where:"Kitsilano YC, Vancouver",mi:140,s:"open",v:"Open, no age limit",
+  e:"Home regatta for the Vancouver 505 fleet. Open to Star, Lightning, Cal 20, F18, Hobie 18, 505, Martin 242 and Dragon; each class needs 5 boats and there's no handicap fleet, so no ILCA or Flying Scot start. Boats need $500,000 third-party liability insurance.",
+  nor:CF+"VLLssbWGcxuk_Kits-Invite-NOR-2026.pdf",yr:"2026 NOR"},
+ {m:6,d:17,date:"Jul 17",tag:"One day",k:{ilca:'start'},name:"Bloomin' Algae Laser Regatta",where:"Vancouver Lake SC, WA",mi:215,s:"check",v:"No NOR found",
+  e:"Billed as a one-day Laser regatta for all sailors, but no Notice of Race was online and the club site was down. Confirm with VLSC.",
+  nor:"https://www.vlsc.org/laser_regatta.php",yr:"Event page",navail:true},
+ {m:6,d:18,date:"Jul 17–18",k:{ilca:'start',f505:'Fun class only',fs:'Fun class only'},name:"Andy Hunt Celebrational / Jericho ILCA Masters",where:"Jericho Sailing Centre, Vancouver",mi:140,s:"open",v:"Open to adults",
+  e:"Open to ILCA 7, 6 and 4 and many other classes. ILCA fleets get regular and Masters scoring. May fold into the 2027 North American Masters.",
+  nor:"https://jsca.bc.ca/wp-content/uploads/2026/01/2026-Amendment_NOR_Andy_Hunt.pdf",yr:"2026 NOR (amended, full text)"},
+ {m:6,d:18,date:"~Jul 17–18",tag:"Low confidence",k:{ilca:'5+ or handicap',f505:'5+ or handicap',fs:'5+ or handicap'},name:"Naramata Mug",where:"South Okanagan SA, Summerland",mi:320,s:"note",v:"Open, wildfire risk",
+  e:"Open to all dinghies under 20 ft with a Portsmouth number. The 2026 edition was cancelled for wildfire smoke.",
+  nor:"https://sosailing.ca/wp-content/uploads/2026/03/NORNaramataMug2026.pdf",yr:"2026 NOR"},
+ {m:6,d:24,date:"Jul 24–25",k:{ilca:'start',f505:'start'},name:"Columbia Gorge One-Design",where:"CGRA, Cascade Locks, OR",mi:260,s:"note",v:"Open, early deadline matters",
+  e:"Open to invited classes that reach 5 entries by the June 30 early deadline; ILCA 6 and 7 and the International 505 were invited in 2026 (505 entry $180 early, $225 late). No age limit (under-18s need a support person).",
+  nor:CF+"vbNFlpwrRZwT_2026-CGOD-NOR-v1.pdf",yr:"2026 NOR"},
+ {m:6,d:29,date:"~Jul 29",tag:"Thursday",k:{ilca:'start'},name:"Laser Gorge Blowout",where:"Cascade Locks to Hood River",mi:260,s:"open",v:"Open to adults",
+  e:"Downwind race open to ILCA 7, 6 and 4, capped at roughly 25–30 entries. No age limit. The 2026 NOR link is below; its host blocks automated reading, so eligibility is from the 2022 NOR.",
+  nor:"https://www.cgra.org/Regatta_Events_2026/2026_Laser_Blowout_NOR_Final.pdf",yr:"2026 NOR",alt:"https://www.regattanetwork.com/clubmgmt/regatta_uploads/24331/2022LaserBlowoutNOR.pdf",altLabel:"2022 NOR (read)"},
+ {m:6,d:30,date:"Jul 30–Aug 1",k:{ilca:'start'},name:"Skamania Coves Invitational",where:"CGRA at Skamania Coves, Stevenson, WA",mi:255,s:"note",v:"Masters only, age 30+",
+  e:"ILCA Masters (ILCA 7 and 6) and Tasars only. You must be 30 by the first day to sail the ILCA Masters class.",
+  nor:CF+"qQvzhmOpVFvw_2026-SCI-NOR-V1.3.pdf",yr:"2026 NOR"},
+ {m:7,d:7,date:"~Aug 7–8",tag:"Date moves around",k:{ilca:'start',f505:'start',fs:'start'},name:"PT Small Boat Regatta",where:"Port Townsend Sailing Association",mi:0,s:"open",v:"Open to adults",
+  e:"Open to all small boats; the NOR names Laser/ILCA, Thistle, Flying Scot, 505 and FJ. In 2024 Flying Scots had their own start with 4 boats, including the class's Pacific District governor and Columbia Basin SC sailors. In 2025 the starts were Laser, 110 and a mixed B class, so Scot and 505 starts depend on turnout.",
+  nor:"https://ptsail-media.s3.us-west-2.amazonaws.com/wp-content/uploads/2026/07/17214056/2026-Small-Boat-NOR-V1.pdf",yr:"2026 NOR"},
+ {m:7,d:28,date:"Aug 28–29",tag:"Could stay in July",k:{ilca:'start'},name:"Whistler Regatta",where:"Whistler Sailing Association, Alta Lake",mi:215,s:"check",v:"NOR text excludes adults",
+  e:"Laser, Radial and 4.7 are listed, but the 2026 NOR also says skippers shall be 14 or under. That looks like an Opti Green Fleet rule pasted in (2026 doubled as the BC Opti Champs), but as written it bars adults. Ask before entering.",
+  nor:"https://www.whistlersailing.com/wp-content/uploads/2026/06/Notice-of-Race-2026.pdf",yr:"2026 NOR"},
+ {m:8,d:25,date:"Sep 25–26",k:{ilca:'start',f505:'if 5+ enter',fs:'if 5+ enter'},name:"Puget Sound Sailing Championships",where:"CYC Seattle, Shilshole",mi:50,s:"open",v:"Open to adults",
+  e:"Open to RS Aero, ILCA, Optimist, Snipe, Tasar and other centerboard classes with 5+ boats. $300,000 liability insurance required.",
+  nor:CF+"fPaKREeQnTKM_CYC-PSSC-Small-Boats-_JFest-NOR---2026.pdf",yr:"2026 NOR"},
+ {m:8,d:26,date:"Sep 25–26",k:{ilca:'start',f505:'open class, 3+ boats',fs:'open class, 3+ boats'},name:"Steve McBride Fall Dinghies",where:"Royal Victoria YC",mi:50,far:"+ Coho ferry",s:"open",v:"Open to adults",
+  e:"Open to all boats of ILCA 7, 6 and 4 plus an open class. Age rules apply only to Optis. US residents need USD $300,000 insurance.",
+  nor:CF+"hmlrySLMHsvC_2026-Fall-Dinghy-NoR-v1.0.2.pdf",yr:"2026 NOR"},
+ {m:9,d:23,date:"Oct 23–24",k:{ilca:'start'},name:"ILCA Pumpkin Bowl",where:"West Vancouver YC",mi:145,s:"note",v:"Open, higher insurance minimum",
+  e:"Open to all boats of ILCA 7, 6 and 4; age rules apply only to Optis. Youth-heavy. US residents need USD $500,000 liability insurance.",
+  nor:CF+"KyGIQOBastOq_PUMPKIN-BOWL-NOR-2026_v1.pdf",yr:"2026 NOR"},
+ {m:10,d:6,date:"Nov 6–7",k:{ilca:'start',f505:'fleet may apply, 5+',fs:'fleet may apply, 5+'},name:"Blue Nose",where:"Kitsilano YC, Vancouver",mi:140,s:"open",v:"Open to adults",
+  e:"Open to ILCA 4, 6 and 7, Cal 20, 29er, 420, Feva and Optis. Only sailors under 19 need a parent's approval. US boats need USD $300,000 insurance.",
+  nor:CF+"xVDWnSuCcsFP_Bluenose-2025-NOR-FINAL.pdf",yr:"2025 NOR (2026 not posted)"},
+ {m:10,d:20,date:"Nov 20–21",k:{ilca:'start',f505:'if 5+ enter',fs:'if 5+ enter'},name:"Turkey Bowl",where:"CYC Seattle, Shilshole",mi:50,s:"open",v:"Open to adults",
+  e:"Open to RS Aero, ILCA, Optimist, Snipe, Tasar and any centerboard class with 5+ entries; 505s raced it in 2022. Standard adult fee with a youth under-18 rate. $300,000 liability insurance required.",
+  nor:CF+"SgxKxAhuiQir_2025-Turkey-Bowl-NOR.pdf",yr:"2025 NOR (2026 not posted)"},
+ {m:11,d:15,date:"2027 TBA",k:{ilca:'start'},name:"ILCA North American Masters",where:"Jericho Sailing Centre, Vancouver",mi:140,s:"tba",v:"Masters championship",
+  e:"Jericho and its ILCA fleet are hosting in 2027. Dates and NOR not yet announced.",
+  nor:null,yr:"Not yet published"}
+];
+const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MFULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const monthsEl=document.getElementById("months"), dotsEl=document.getElementById("dots"), list=document.getElementById("list");
+MONTHS.forEach(m=>{const d=document.createElement("div");d.className="rail-month";d.innerHTML="<span>"+m+"</span>";monthsEl.appendChild(d);});
+R.forEach((r,i)=>{r.id="r"+i;
+  const b=document.createElement("button");b.className="dot "+r.s;b.title=r.date+", "+r.name;b.setAttribute("aria-label",r.name);
+  const pos=((r.m+(r.d-1)/31)/12)*100;
+  const same=R.slice(0,i).filter(x=>Math.abs(((x.m+(x.d-1)/31)/12)*100-pos)<1.6).length;
+  b.style.left=pos+"%";b.style.top=(same*14)+"px";
+  b.addEventListener("click",()=>{const el=document.getElementById(r.id);if(!el||el.hidden)return;el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.add("flash");setTimeout(()=>el.classList.remove("flash"),1400);});
+  r.dot=b;dotsEl.appendChild(b);
+});
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+let CUR={f:'all',c:'any'};
+const CN={ilca:'ILCA',f505:'505',fs:'Flying Scot'};
+function chips(k){return '<div class="classes">'+Object.keys(CN).filter(c=>k&&k[c]).map(c=>k[c]==='start'?'<span class="chip start">'+CN[c]+' start</span>':'<span class="chip cond">'+CN[c]+': '+esc(k[c])+'</span>').join('')+'</div>';}
+function render(f,c){
+  list.innerHTML="";let lastM=-1;
+  R.forEach(r=>{
+    const show = (f==="all" || (f==="near" && r.mi<=200) || (f==="flag" && (r.s==="check"||r.s==="note"))) && (c==="any" || (r.k && r.k[c]));
+    r.dot.classList.toggle("dim",!show);
+    if(!show) return;
+    if(r.m!==lastM && r.date!=="2027 TBA"){const h=document.createElement("h2");h.className="month-h";h.textContent=MFULL[r.m];list.appendChild(h);lastM=r.m;}
+    if(r.date==="2027 TBA"){const h=document.createElement("h2");h.className="month-h";h.textContent="Date to be announced";list.appendChild(h);}
+    const drive = r.mi===0 ? "Home waters" : "~"+r.mi+" mi drive"+(r.far?" "+r.far:"");
+    const a=document.createElement("article");a.className="row "+r.s;a.id=r.id;
+    a.innerHTML=
+      '<div class="date">'+esc(r.date)+(r.tag?'<small>'+esc(r.tag)+'</small>':'')+'</div>'+
+      '<div><h3 class="name">'+esc(r.name)+'</h3><p class="where">'+esc(r.where)+', '+esc(drive)+(r.mi>200?' (past 200 mi)':'')+'</p>'+
+      chips(r.k)+'<span class="verdict">'+esc(r.v)+'</span><p class="elig">'+esc(r.e)+'</p></div>'+
+      '<div class="side">'+(r.nor?'<a class="nor" href="'+esc(r.nor)+'" target="_blank" rel="noopener">'+(r.navail?'Open event page':'Open Notice of Race')+'</a>':'<span class="nor none">No NOR yet</span>')+
+      '<span class="yr">'+esc(r.yr)+'</span>'+(r.alt?'<a class="alt" href="'+esc(r.alt)+'" target="_blank" rel="noopener">'+esc(r.altLabel)+'</a>':'')+'</div>';
+    list.appendChild(a);
+  });
+}
+document.querySelectorAll(".controls button").forEach(b=>b.addEventListener("click",()=>{
+  const grp=b.dataset.f?"f":"c";
+  b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false"));
+  b.setAttribute("aria-pressed","true");CUR[grp]=b.dataset[grp];render(CUR.f,CUR.c);
+}));
+render("all","any");
+</script>
+</body>
+</html>
