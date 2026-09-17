@@ -5,7 +5,8 @@
       "month": 0,
       "day": 23,
       "dateLabel": "Jan 23–24",
-      "tag": "Confirmed",
+      "tag": null,
+      "dateStatus": "confirmed",
       "classes": {
         "ilca": "start",
         "f505": "if 5+ enter",
@@ -33,6 +34,7 @@
       "day": 13,
       "dateLabel": "Feb 13–14",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -58,6 +60,7 @@
       "day": 10,
       "dateLabel": "Apr 10–11",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "if 5+ enter",
@@ -85,6 +88,7 @@
       "day": 17,
       "dateLabel": "Apr 17–18",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "if 5+ enter",
@@ -112,6 +116,7 @@
       "day": 18,
       "dateLabel": "Apr 17–18",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -137,6 +142,7 @@
       "day": 1,
       "dateLabel": "May 1–2",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "open class, 3+ boats",
@@ -164,6 +170,7 @@
       "day": 15,
       "dateLabel": "May 15–16",
       "tag": "or May 22–23",
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "all classes welcome",
@@ -191,6 +198,7 @@
       "day": 5,
       "dateLabel": "Jun 5–6",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "5+ or handicap",
@@ -218,6 +226,7 @@
       "day": 12,
       "dateLabel": "Jun 12–13",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "5+ or handicap",
@@ -245,6 +254,7 @@
       "day": 19,
       "dateLabel": "Jun 19–20",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -270,6 +280,7 @@
       "day": 10,
       "dateLabel": "Jul 10–11",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -295,6 +306,7 @@
       "day": 11,
       "dateLabel": "Jul 10–11",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "f505": "start"
       },
@@ -320,6 +332,7 @@
       "day": 17,
       "dateLabel": "Jul 17",
       "tag": "One day",
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -345,6 +358,7 @@
       "day": 18,
       "dateLabel": "Jul 17–18",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "Fun class only",
@@ -372,6 +386,7 @@
       "day": 18,
       "dateLabel": "~Jul 17–18",
       "tag": "Low confidence",
+      "dateStatus": "projected",
       "classes": {
         "ilca": "5+ or handicap",
         "f505": "5+ or handicap",
@@ -399,6 +414,7 @@
       "day": 24,
       "dateLabel": "Jul 24–25",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "start"
@@ -425,6 +441,7 @@
       "day": 29,
       "dateLabel": "~Jul 29",
       "tag": "Thursday",
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -450,6 +467,7 @@
       "day": 30,
       "dateLabel": "Jul 30–Aug 1",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -475,6 +493,7 @@
       "day": 7,
       "dateLabel": "~Aug 7–8",
       "tag": "Date moves around",
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "start",
@@ -502,6 +521,7 @@
       "day": 28,
       "dateLabel": "Aug 28–29",
       "tag": "Could stay in July",
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -527,6 +547,7 @@
       "day": 25,
       "dateLabel": "Sep 25–26",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "if 5+ enter",
@@ -554,6 +575,7 @@
       "day": 26,
       "dateLabel": "Sep 25–26",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "open class, 3+ boats",
@@ -581,6 +603,7 @@
       "day": 23,
       "dateLabel": "Oct 23–24",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start"
       },
@@ -606,6 +629,7 @@
       "day": 6,
       "dateLabel": "Nov 6–7",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "fleet may apply, 5+",
@@ -633,6 +657,7 @@
       "day": 20,
       "dateLabel": "Nov 20–21",
       "tag": null,
+      "dateStatus": "projected",
       "classes": {
         "ilca": "start",
         "f505": "if 5+ enter",
@@ -660,6 +685,7 @@
       "day": 15,
       "dateLabel": "2027 TBA",
       "tag": null,
+      "dateStatus": "tba",
       "classes": {
         "ilca": "start"
       },

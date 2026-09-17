@@ -6,7 +6,7 @@ Open `index.html` in a browser. It's a single self-contained page (Google Fonts 
 
 ## Notes
 
-- 2027 dates are projections from past years unless marked confirmed.
+- Each date carries a badge: Confirmed (the 2027 NOR or an announcement gives this date), Projected (best guess from past years), or TBA (not yet announced). Set per event via `dateStatus` in `data/events.json`.
 - Eligibility and class notes come from each event's most recent Notice of Race (mostly 2026). Re-check when 2027 NORs are published.
 - Class tags: solid = the class is named in the NOR with its own start; dashed = the class races only under the stated condition.
 

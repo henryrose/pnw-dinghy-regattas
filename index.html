@@ -58,6 +58,10 @@ header p{max-width:62ch;color:var(--ink-2);margin:14px 0 0}
 .row.flash{box-shadow:0 0 0 3px var(--link)}
 .date{font:700 1.55rem/1.02 "Barlow Condensed","Arial Narrow",sans-serif}
 .date small{display:block;font:500 .8rem/1.3 "Barlow",sans-serif;color:var(--ink-2);margin-top:4px}
+.datestat{display:inline-block;font:700 .66rem/1 "Barlow",sans-serif;text-transform:uppercase;letter-spacing:.03em;padding:3px 7px;border-radius:3px;margin-top:7px}
+.datestat.confirmed{background:var(--sea-bg);color:var(--sea)}
+.datestat.projected{background:var(--paper);color:var(--ink-2);border:1px dashed var(--rule)}
+.datestat.tba{background:var(--paper);color:var(--ink-2);border:1px dashed var(--rule);font-style:italic;text-transform:none}
 .name{font:600 1.15rem/1.25 "Barlow",sans-serif;margin:0}
 .where{color:var(--ink-2);font-size:.95rem;margin:2px 0 8px}
 .verdict{display:inline-block;font:600 .8rem/1 "Barlow",sans-serif;padding:5px 9px;border-radius:4px;margin-bottom:6px}
@@ -76,6 +80,7 @@ footer p{margin:0 0 10px}
   .row{grid-template-columns:1fr;gap:8px}
   .date{font-size:1.35rem}
   .date small{display:inline;margin-left:8px}
+  .datestat{margin-top:0;margin-left:8px}
   .rail-month span{font-size:.72rem;padding-left:2px}
 }
 @media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto!important} }
@@ -85,7 +90,7 @@ footer p{margin:0 0 10px}
 <div class="wrap">
 <header>
   <h1>Dinghy regattas in reach of Port Townsend, 2027</h1>
-  <p>Annual regattas for ILCA, 505 and Flying Scot sailors, with projected 2027 dates, drive distance, and what each event's most recent Notice of Race says about who can enter and which classes get a start. Dates are projections from past years unless marked confirmed. The adult-eligibility colors refer to the ILCA fleet unless the event has no ILCA start.</p>
+  <p>Annual regattas for ILCA, 505 and Flying Scot sailors, with projected 2027 dates, drive distance, and what each event's most recent Notice of Race says about who can enter and which classes get a start. Each date is tagged Confirmed, Projected, or TBA — see below. The adult-eligibility colors refer to the ILCA fleet unless the event has no ILCA start.</p>
 </header>
 
 <div class="rail" aria-hidden="true">
@@ -112,6 +117,7 @@ footer p{margin:0 0 10px}
   <button type="button" data-f="flag" aria-pressed="false">Needs attention</button>
 </div>
 <p class="far" style="margin:-6px 0 10px">Solid tag: the class is named in the NOR and gets its own start. Dashed tag: the class can race only under a condition shown on the tag.</p>
+<p class="far" style="margin:-6px 0 22px"><span class="datestat confirmed" style="margin:0 4px 0 0">Confirmed</span> the 2027 NOR or an announcement gives this date. <span class="datestat projected" style="margin:0 4px 0 10px">Projected</span> our best guess, based on past years. <span class="datestat tba" style="margin:0 4px 0 10px">TBA</span> not yet announced.</p>
 
 <main id="list"></main>
 
@@ -129,7 +135,8 @@ const R = [
   "month": 0,
   "day": 23,
   "dateLabel": "Jan 23–24",
-  "tag": "Confirmed",
+  "tag": null,
+  "dateStatus": "confirmed",
   "classes": {
    "ilca": "start",
    "f505": "if 5+ enter",
@@ -153,6 +160,7 @@ const R = [
   "day": 13,
   "dateLabel": "Feb 13–14",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -174,6 +182,7 @@ const R = [
   "day": 10,
   "dateLabel": "Apr 10–11",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "if 5+ enter",
@@ -197,6 +206,7 @@ const R = [
   "day": 17,
   "dateLabel": "Apr 17–18",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "if 5+ enter",
@@ -220,6 +230,7 @@ const R = [
   "day": 18,
   "dateLabel": "Apr 17–18",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -241,6 +252,7 @@ const R = [
   "day": 1,
   "dateLabel": "May 1–2",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "open class, 3+ boats",
@@ -264,6 +276,7 @@ const R = [
   "day": 15,
   "dateLabel": "May 15–16",
   "tag": "or May 22–23",
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "all classes welcome",
@@ -287,6 +300,7 @@ const R = [
   "day": 5,
   "dateLabel": "Jun 5–6",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "5+ or handicap",
@@ -310,6 +324,7 @@ const R = [
   "day": 12,
   "dateLabel": "Jun 12–13",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "5+ or handicap",
@@ -333,6 +348,7 @@ const R = [
   "day": 19,
   "dateLabel": "Jun 19–20",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -354,6 +370,7 @@ const R = [
   "day": 10,
   "dateLabel": "Jul 10–11",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -375,6 +392,7 @@ const R = [
   "day": 11,
   "dateLabel": "Jul 10–11",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "f505": "start"
   },
@@ -396,6 +414,7 @@ const R = [
   "day": 17,
   "dateLabel": "Jul 17",
   "tag": "One day",
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -417,6 +436,7 @@ const R = [
   "day": 18,
   "dateLabel": "Jul 17–18",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "Fun class only",
@@ -440,6 +460,7 @@ const R = [
   "day": 18,
   "dateLabel": "~Jul 17–18",
   "tag": "Low confidence",
+  "dateStatus": "projected",
   "classes": {
    "ilca": "5+ or handicap",
    "f505": "5+ or handicap",
@@ -463,6 +484,7 @@ const R = [
   "day": 24,
   "dateLabel": "Jul 24–25",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "start"
@@ -485,6 +507,7 @@ const R = [
   "day": 29,
   "dateLabel": "~Jul 29",
   "tag": "Thursday",
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -506,6 +529,7 @@ const R = [
   "day": 30,
   "dateLabel": "Jul 30–Aug 1",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -527,6 +551,7 @@ const R = [
   "day": 7,
   "dateLabel": "~Aug 7–8",
   "tag": "Date moves around",
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "start",
@@ -550,6 +575,7 @@ const R = [
   "day": 28,
   "dateLabel": "Aug 28–29",
   "tag": "Could stay in July",
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -571,6 +597,7 @@ const R = [
   "day": 25,
   "dateLabel": "Sep 25–26",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "if 5+ enter",
@@ -594,6 +621,7 @@ const R = [
   "day": 26,
   "dateLabel": "Sep 25–26",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "open class, 3+ boats",
@@ -617,6 +645,7 @@ const R = [
   "day": 23,
   "dateLabel": "Oct 23–24",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start"
   },
@@ -638,6 +667,7 @@ const R = [
   "day": 6,
   "dateLabel": "Nov 6–7",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "fleet may apply, 5+",
@@ -661,6 +691,7 @@ const R = [
   "day": 20,
   "dateLabel": "Nov 20–21",
   "tag": null,
+  "dateStatus": "projected",
   "classes": {
    "ilca": "start",
    "f505": "if 5+ enter",
@@ -684,6 +715,7 @@ const R = [
   "day": 15,
   "dateLabel": "2027 TBA",
   "tag": null,
+  "dateStatus": "tba",
   "classes": {
    "ilca": "start"
   },
@@ -717,6 +749,8 @@ function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;","
 let CUR={f:'all',c:'any'};
 const CN={ilca:'ILCA',f505:'505',fs:'Flying Scot'};
 function chips(k){return '<div class="classes">'+Object.keys(CN).filter(c=>k&&k[c]).map(c=>k[c]==='start'?'<span class="chip start">'+CN[c]+' start</span>':'<span class="chip cond">'+CN[c]+': '+esc(k[c])+'</span>').join('')+'</div>';}
+const DS_LABEL={confirmed:'Confirmed',projected:'Projected',tba:'TBA'};
+function datestat(s){return s?'<span class="datestat '+s+'">'+DS_LABEL[s]+'</span>':'';}
 function render(f,c){
   list.innerHTML="";let lastM=-1;
   R.forEach(r=>{
@@ -728,7 +762,7 @@ function render(f,c){
     const drive = r.miles===0 ? "Home waters" : "~"+r.miles+" mi drive"+(r.far?" "+r.far:"");
     const a=document.createElement("article");a.className="row "+r.status;a.id=r.id;
     a.innerHTML=
-      '<div class="date">'+esc(r.dateLabel)+(r.tag?'<small>'+esc(r.tag)+'</small>':'')+'</div>'+
+      '<div class="date">'+esc(r.dateLabel)+datestat(r.dateStatus)+(r.tag?'<small>'+esc(r.tag)+'</small>':'')+'</div>'+
       '<div><h3 class="name">'+esc(r.name)+'</h3><p class="where">'+esc(r.where)+', '+esc(drive)+(r.miles>200?' (past 200 mi)':'')+'</p>'+
       chips(r.classes)+'<span class="verdict">'+esc(r.verdict)+'</span><p class="elig">'+esc(r.eligibility)+'</p></div>'+
       '<div class="side">'+(r.nor?'<a class="nor" href="'+esc(r.nor)+'" target="_blank" rel="noopener">'+(r.norIsPageOnly?'Open event page':'Open Notice of Race')+'</a>':'<span class="nor none">No NOR yet</span>')+
