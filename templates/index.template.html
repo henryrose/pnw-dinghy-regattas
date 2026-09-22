@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PNW Dinghy Regattas 2027: ILCA, 505, Flying Scot</title>
+<title>PNW Dinghy Regattas 2026–2027: ILCA, 505, Flying Scot</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -89,8 +89,8 @@ footer p{margin:0 0 10px}
 <body>
 <div class="wrap">
 <header>
-  <h1>Dinghy regattas in reach of Port Townsend, 2027</h1>
-  <p>Annual regattas for ILCA, 505 and Flying Scot sailors, with projected 2027 dates, drive distance, and what each event's most recent Notice of Race says about who can enter and which classes get a start. Each date is tagged Confirmed, Projected, or TBA — see below. The adult-eligibility colors refer to the ILCA fleet unless the event has no ILCA start.</p>
+  <h1>Dinghy regattas in reach of Port Townsend, 2026–2027</h1>
+  <p>Annual regattas for ILCA, 505 and Flying Scot sailors, running from what's left on the 2026 calendar through projected 2027 dates, with drive distance and what each event's most recent Notice of Race says about who can enter and which classes get a start. Each date is tagged Confirmed, Projected, or TBA — see below. The adult-eligibility colors refer to the ILCA fleet unless the event has no ILCA start.</p>
 </header>
 
 <div class="rail" aria-hidden="true">
@@ -117,12 +117,12 @@ footer p{margin:0 0 10px}
   <button type="button" data-f="flag" aria-pressed="false">Needs attention</button>
 </div>
 <p class="far" style="margin:-6px 0 10px">Solid tag: the class is named in the NOR and gets its own start. Dashed tag: the class can race only under a condition shown on the tag.</p>
-<p class="far" style="margin:-6px 0 22px"><span class="datestat confirmed" style="margin:0 4px 0 0">Confirmed</span> the 2027 NOR or an announcement gives this date. <span class="datestat projected" style="margin:0 4px 0 10px">Projected</span> our best guess, based on past years. <span class="datestat tba" style="margin:0 4px 0 10px">TBA</span> not yet announced.</p>
+<p class="far" style="margin:-6px 0 22px"><span class="datestat confirmed" style="margin:0 4px 0 0">Confirmed</span> its NOR or an announcement gives this date. <span class="datestat projected" style="margin:0 4px 0 10px">Projected</span> our best guess, based on past years. <span class="datestat tba" style="margin:0 4px 0 10px">TBA</span> not yet announced.</p>
 
 <main id="list"></main>
 
 <footer>
-  <p>Eligibility notes come from reading each linked Notice of Race. Most are the 2026 edition; where the 2026 document wasn't posted or reachable, the year shown is the one read. Rules can change year to year, so re-check the 2027 NOR when it's published.</p>
+  <p>Eligibility notes come from reading each linked Notice of Race, using the most recent edition posted at the time. Rules can change year to year, so re-check an event's NOR once next year's edition is published.</p>
   <p>Insurance: US Sailing membership doesn't include third-party liability cover. Most events here require it, and the BC events set a USD minimum for US boats.</p>
   <p>Flying Scot racing in the region is thin. The Flying Scot class lists Pacific District fleets at Columbia Basin Sailing Club (Richland), Lake Washington and Sequim Bay, but the PT Small Boat Regatta is the only annual regatta found with a dedicated Scot start. Sequim Bay YC's one-design regatta for Thistles, Scots, Lightnings and 505s last appears on Regatta Network in 2021.</p>
   <p>Not annual, so not listed: the 505 Pacific Coast Championships (Bellingham YC in 2025) and Bellingham's Dale Jepsen One-Design regatta, which hasn't been held since 2021.</p>
@@ -131,6 +131,7 @@ footer p{margin:0 0 10px}
 
 <script>
 const R = /*__EVENTS_DATA__*/[]/*__EVENTS_DATA_END__*/;
+R.sort((a,b)=>(a.year-b.year)||(a.month-b.month)||(a.day-b.day));
 const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const MFULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
 const monthsEl=document.getElementById("months"), dotsEl=document.getElementById("dots"), list=document.getElementById("list");
@@ -150,13 +151,17 @@ function chips(k){return '<div class="classes">'+Object.keys(CN).filter(c=>k&&k[
 const DS_LABEL={confirmed:'Confirmed',projected:'Projected',tba:'TBA'};
 function datestat(s){return s?'<span class="datestat '+s+'">'+DS_LABEL[s]+'</span>':'';}
 function render(f,c){
-  list.innerHTML="";let lastM=-1;
+  list.innerHTML="";let lastKey=null;
   R.forEach(r=>{
     const show = (f==="all" || (f==="near" && r.miles<=200) || (f==="flag" && (r.status==="check"||r.status==="note"))) && (c==="any" || (r.classes && r.classes[c]));
     r.dot.classList.toggle("dim",!show);
     if(!show) return;
-    if(r.month!==lastM && r.dateLabel!=="2027 TBA"){const h=document.createElement("h2");h.className="month-h";h.textContent=MFULL[r.month];list.appendChild(h);lastM=r.month;}
-    if(r.dateLabel==="2027 TBA"){const h=document.createElement("h2");h.className="month-h";h.textContent="Date to be announced";list.appendChild(h);}
+    const key=r.year+"-"+r.month;
+    if(key!==lastKey){
+      const h=document.createElement("h2");h.className="month-h";
+      h.textContent = r.dateStatus==="tba" ? "Date to be announced" : MFULL[r.month]+" "+r.year;
+      list.appendChild(h);lastKey=key;
+    }
     const drive = r.miles===0 ? "Home waters" : "~"+r.miles+" mi drive"+(r.far?" "+r.far:"");
     const a=document.createElement("article");a.className="row "+r.status;a.id=r.id;
     a.innerHTML=

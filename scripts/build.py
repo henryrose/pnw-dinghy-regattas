@@ -14,9 +14,9 @@ OUT_PATH = ROOT / "index.html"
 # update_events.py (id, infoUrl, lastChecked, linkStatus) stay out of the
 # published page.
 PUBLIC_FIELDS = [
-    "month", "day", "dateLabel", "tag", "dateStatus", "classes", "name",
-    "where", "miles", "far", "status", "verdict", "eligibility", "nor",
-    "norYear", "norIsPageOnly", "alt", "altLabel",
+    "year", "month", "day", "dateLabel", "tag", "dateStatus", "classes",
+    "name", "where", "miles", "far", "status", "verdict", "eligibility",
+    "nor", "norYear", "norIsPageOnly", "alt", "altLabel",
 ]
 
 PLACEHOLDER = re.compile(r"/\*__EVENTS_DATA__\*/.*?/\*__EVENTS_DATA_END__\*/", re.S)

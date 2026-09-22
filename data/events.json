@@ -2,6 +2,7 @@
   "events": [
     {
       "id": "frigid-digit",
+      "year": 2027,
       "month": 0,
       "day": 23,
       "dateLabel": "Jan 23–24",
@@ -30,6 +31,7 @@
     },
     {
       "id": "frozen-assets",
+      "year": 2027,
       "month": 1,
       "day": 13,
       "dateLabel": "Feb 13–14",
@@ -56,6 +58,7 @@
     },
     {
       "id": "flights-of-spring",
+      "year": 2027,
       "month": 3,
       "day": 10,
       "dateLabel": "Apr 10–11",
@@ -84,6 +87,7 @@
     },
     {
       "id": "puget-sound-spring-regatta",
+      "year": 2027,
       "month": 3,
       "day": 17,
       "dateLabel": "Apr 17–18",
@@ -112,6 +116,7 @@
     },
     {
       "id": "kitten-cup",
+      "year": 2027,
       "month": 3,
       "day": 18,
       "dateLabel": "Apr 17–18",
@@ -138,6 +143,7 @@
     },
     {
       "id": "spring-dinghies",
+      "year": 2027,
       "month": 4,
       "day": 1,
       "dateLabel": "May 1–2",
@@ -166,6 +172,7 @@
     },
     {
       "id": "cosa-springtime-regatta",
+      "year": 2027,
       "month": 4,
       "day": 15,
       "dateLabel": "May 15–16",
@@ -194,6 +201,7 @@
     },
     {
       "id": "john-debenedetti-memorial",
+      "year": 2027,
       "month": 5,
       "day": 5,
       "dateLabel": "Jun 5–6",
@@ -222,6 +230,7 @@
     },
     {
       "id": "nosa-regatta",
+      "year": 2027,
       "month": 5,
       "day": 12,
       "dateLabel": "Jun 12–13",
@@ -250,6 +259,7 @@
     },
     {
       "id": "waves",
+      "year": 2027,
       "month": 5,
       "day": 19,
       "dateLabel": "Jun 19–20",
@@ -276,6 +286,7 @@
     },
     {
       "id": "wind-regatta",
+      "year": 2027,
       "month": 6,
       "day": 10,
       "dateLabel": "Jul 10–11",
@@ -302,6 +313,7 @@
     },
     {
       "id": "kitsilano-invitational",
+      "year": 2027,
       "month": 6,
       "day": 11,
       "dateLabel": "Jul 10–11",
@@ -328,6 +340,7 @@
     },
     {
       "id": "bloomin-algae-laser-regatta",
+      "year": 2027,
       "month": 6,
       "day": 17,
       "dateLabel": "Jul 17",
@@ -354,6 +367,7 @@
     },
     {
       "id": "andy-hunt-celebrational",
+      "year": 2027,
       "month": 6,
       "day": 18,
       "dateLabel": "Jul 17–18",
@@ -382,6 +396,7 @@
     },
     {
       "id": "naramata-mug",
+      "year": 2027,
       "month": 6,
       "day": 18,
       "dateLabel": "~Jul 17–18",
@@ -410,6 +425,7 @@
     },
     {
       "id": "columbia-gorge-one-design",
+      "year": 2027,
       "month": 6,
       "day": 24,
       "dateLabel": "Jul 24–25",
@@ -437,6 +453,7 @@
     },
     {
       "id": "laser-gorge-blowout",
+      "year": 2027,
       "month": 6,
       "day": 29,
       "dateLabel": "~Jul 29",
@@ -463,6 +480,7 @@
     },
     {
       "id": "skamania-coves-invitational",
+      "year": 2027,
       "month": 6,
       "day": 30,
       "dateLabel": "Jul 30–Aug 1",
@@ -489,6 +507,7 @@
     },
     {
       "id": "pt-small-boat-regatta",
+      "year": 2027,
       "month": 7,
       "day": 7,
       "dateLabel": "~Aug 7–8",
@@ -517,6 +536,7 @@
     },
     {
       "id": "whistler-regatta",
+      "year": 2027,
       "month": 7,
       "day": 28,
       "dateLabel": "Aug 28–29",
@@ -543,11 +563,12 @@
     },
     {
       "id": "puget-sound-sailing-championships",
+      "year": 2026,
       "month": 8,
-      "day": 25,
-      "dateLabel": "Sep 25–26",
+      "day": 26,
+      "dateLabel": "Sep 26–27",
       "tag": null,
-      "dateStatus": "projected",
+      "dateStatus": "confirmed",
       "classes": {
         "ilca": "start",
         "f505": "if 5+ enter",
@@ -571,11 +592,12 @@
     },
     {
       "id": "steve-mcbride-fall-dinghies",
+      "year": 2026,
       "month": 8,
       "day": 26,
-      "dateLabel": "Sep 25–26",
+      "dateLabel": "Sep 26–27",
       "tag": null,
-      "dateStatus": "projected",
+      "dateStatus": "confirmed",
       "classes": {
         "ilca": "start",
         "f505": "open class, 3+ boats",
@@ -599,11 +621,12 @@
     },
     {
       "id": "ilca-pumpkin-bowl",
+      "year": 2026,
       "month": 9,
-      "day": 23,
-      "dateLabel": "Oct 23–24",
-      "tag": null,
-      "dateStatus": "projected",
+      "day": 24,
+      "dateLabel": "Oct 24–25",
+      "tag": "ILCA/doublehanded weekend — Optis race Oct 17–18",
+      "dateStatus": "confirmed",
       "classes": {
         "ilca": "start"
       },
@@ -625,11 +648,12 @@
     },
     {
       "id": "blue-nose",
+      "year": 2026,
       "month": 10,
-      "day": 6,
-      "dateLabel": "Nov 6–7",
-      "tag": null,
-      "dateStatus": "projected",
+      "day": 7,
+      "dateLabel": "Nov 7–8",
+      "tag": "Per BC Sailing calendar; club hasn't posted a 2026 NOR yet",
+      "dateStatus": "confirmed",
       "classes": {
         "ilca": "start",
         "f505": "fleet may apply, 5+",
@@ -653,6 +677,7 @@
     },
     {
       "id": "turkey-bowl",
+      "year": 2026,
       "month": 10,
       "day": 20,
       "dateLabel": "Nov 20–21",
@@ -681,6 +706,7 @@
     },
     {
       "id": "ilca-north-american-masters",
+      "year": 2027,
       "month": 11,
       "day": 15,
       "dateLabel": "2027 TBA",
